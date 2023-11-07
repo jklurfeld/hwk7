@@ -13,7 +13,7 @@ def get_initial_parents(graph:dict, initial:str) -> dict:
 def get_initial_costs(graph:dict, initial:str) -> dict:
     costs = {}
     for node in graph.keys():
-        if node != None and node != initial:
+        if node != None: #and node != initial:
             costs[node] = float("inf")
     initial_neighbors = graph[initial]
     if initial_neighbors == None:   # Error Checking
@@ -41,12 +41,12 @@ def run_dijkstra(graph:dict, start:str, finish:str) -> list:
     costs = get_initial_costs(graph, start)
     node = find_lowest_cost_node(costs,processed)
 
-    print("costs:", costs)
-    print("lowest cost node:", node)
+    # print("costs:", costs)
+    # print("lowest cost node:", node)
 
     while node is not None:     
         cost = costs[node]
-        print("cost:", cost)
+        # print("cost:", cost)
         neighbors = graph[node] 
         for n in neighbors.keys():
             new_cost = cost + neighbors[n]
@@ -96,10 +96,10 @@ campus["Burton"] = {"Alumnae Gym":4, "Paradise Pond":3, "Neilson":3}
 
 def main():
     
-    print(campus)
+    # print(campus)
     # Test Djikstra's Algorithm on Campus MAp from Cutter to Ford
     print("Testing Djikstra's Algorithm on Campus Map from Cutter to Ford")
-    path = run_dijkstra(campus, "Gym", "Sage")
+    path = run_dijkstra(campus, "Cutter", "Ford")
     print("The shortest path is", path)
 
 
