@@ -1,3 +1,10 @@
+'''
+Names: Jessica Klurfeld, Michelle Lawson
+Peers: NA
+References: NA
+'''
+
+
 def get_initial_parents(graph:dict, initial:str) -> dict:
     parents = {}
     for node in graph.keys():
@@ -68,15 +75,6 @@ def run_dijkstra(graph:dict, start:str, finish:str) -> list:
     return path
 
 
-#Main:
-# graph = {'start': {'a': 6, 'b': 2}, 'a': {'fin': 1}, 'b': {'a': 3, 'fin': 5}, 'fin': {}}
-# path = run_dijkstra(graph, 'start', 'fin')
-# print("The shortest path is", path)
-graph2 = {'Book': {'LP': 5, 'Poster': 0}, 'LP': {'Bass': 15, 'Drum':20}, 'Poster': {'Bass':20, 'Drum':35}, 
-          'Drum': {'Piano':10}, 'Bass': {'Piano':20}, 'Piano': {}}
-path2 = run_dijkstra(graph2, 'Book', 'Piano')
-print("The shortest path is", path2)
-
 campus = {}
 campus["King"] = {"Cutter":2, "Campus Center":3, "Chapin":2, "Paradise Pond":3}
 campus["Lamont"] = {"Cutter":2, "Gillett":3}
@@ -99,11 +97,6 @@ campus["Burton"] = {"Alumnae Gym":4, "Paradise Pond":3, "Neilson":3}
 
 def main():
     
-    # print(campus)
-    # Test Djikstra's Algorithm on Campus MAp from Cutter to Ford
-    # print("Testing Djikstra's Algorithm on Campus Map from Cutter to Ford")
-    # path = run_dijkstra(campus, "Cutter", "Ford")
-    # print("The shortest path is", path)
 
     ### MAKE INTERACTIVE USER INTERFACE ###
     ## User can choose start and end locations
