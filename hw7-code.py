@@ -13,7 +13,7 @@ def get_initial_parents(graph:dict, initial:str) -> dict:
 def get_initial_costs(graph:dict, initial:str) -> dict:
     costs = {}
     for node in graph.keys():
-        if node != None: #and node != initial:
+        if node != None: # and node != initial:
             costs[node] = float("inf")
     initial_neighbors = graph[initial]
     if initial_neighbors == None:   # Error Checking
@@ -41,6 +41,7 @@ def run_dijkstra(graph:dict, start:str, finish:str) -> list:
     costs = get_initial_costs(graph, start)
     node = find_lowest_cost_node(costs,processed)
 
+
     # print("costs:", costs)
     # print("lowest cost node:", node)
 
@@ -62,6 +63,8 @@ def run_dijkstra(graph:dict, start:str, finish:str) -> list:
         if parents[node] != None:
             node = parents[node]
             path = [node] + path
+
+    
     return path
 
 
@@ -98,9 +101,31 @@ def main():
     
     # print(campus)
     # Test Djikstra's Algorithm on Campus MAp from Cutter to Ford
-    print("Testing Djikstra's Algorithm on Campus Map from Cutter to Ford")
-    path = run_dijkstra(campus, "Cutter", "Ford")
-    print("The shortest path is", path)
+    # print("Testing Djikstra's Algorithm on Campus Map from Cutter to Ford")
+    # path = run_dijkstra(campus, "Cutter", "Ford")
+    # print("The shortest path is", path)
+
+    ### MAKE INTERACTIVE USER INTERFACE ###
+    ## User can choose start and end locations
+    print("Welcome to the Smith College Campus Map!")
+    print(" Today, we're going to help you find the path from point A to B with the least foot traffic.")
+    print("Here is a list of all the locations on campus:")
+    for key in campus.keys():
+        print(key)
+    print("Please enter your starting location:")
+    start = input()
+    while start not in campus.keys():
+        print("Sorry, that's not a valid location. Please try again:")
+        start = input()
+    print("Please enter your destination:")
+    end = input()
+    while end not in campus.keys():
+        print("Sorry, that's not a valid location. Please try again:")
+        end = input()
+    path = run_dijkstra(campus, start, end)
+    print("The path of least resistance is", path)
 
 
 main()
+
+
